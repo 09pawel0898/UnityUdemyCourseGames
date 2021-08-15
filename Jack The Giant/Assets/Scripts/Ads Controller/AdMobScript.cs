@@ -9,7 +9,7 @@ public class AdMobScript : MonoBehaviour
 {
     public static AdMobScript instance;
 
-    private readonly string App_ID = "ca-app-pub-5296883921473132~5754997472";
+    //private readonly string App_ID = "ca-app-pub-5296883921473132~5754997472";
 
     private readonly string Banner_Ad_ID = "ca-app-pub-3940256099942544/6300978111"; //"ca-app-pub-5296883921473132/3874390857";
     private readonly string Interstitial_Ad_ID = "ca-app-pub-3940256099942544/1033173712"; //"ca-app-pub-5296883921473132/6392742985";
