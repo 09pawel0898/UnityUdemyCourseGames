@@ -605,7 +605,7 @@ TextureImporter:
       name: gold_medal
       rect:
         serializedVersion: 2
-        x: 321
+        x: 316
         y: 461
         width: 103
         height: 103
@@ -628,8 +628,8 @@ TextureImporter:
         serializedVersion: 2
         x: 425
         y: 462
-        width: 104
-        height: 104
+        width: 103
+        height: 103
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

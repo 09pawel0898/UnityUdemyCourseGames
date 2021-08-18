@@ -55,8 +55,15 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Collectors Scripts\PipeCollector.cs" />
     <Compile Include="Assets\Scripts\BirdScript.cs" />
     <Compile Include="Assets\Scripts\CameraScript.cs" />
+    <Compile Include="Assets\Scripts\Collectors Scripts\BGCollector.cs" />
+    <Compile Include="Assets\Scripts\Game Controllers\GameController.cs" />
+    <Compile Include="Assets\Scripts\Game Controllers\MenuController.cs" />
+    <Compile Include="Assets\Scripts\SceneFader.cs" />
+    <Compile Include="Assets\Scripts\Game Controllers\GameplayController.cs" />
+    <Compile Include="Assets\Scripts\Coroutines\FadeHelpCoroutine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

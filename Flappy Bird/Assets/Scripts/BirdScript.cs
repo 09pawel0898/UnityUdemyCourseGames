@@ -15,8 +15,13 @@ public class BirdScript : MonoBehaviour
 
     private bool didFlap;
     public bool isAlive;
+    public bool gameStarted = false;
 
     private Button flapButton;
+    public int score = 0;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip flapClip, pointClip, diedClip;
 
     private void Awake()
     {
@@ -26,16 +31,12 @@ public class BirdScript : MonoBehaviour
         flapButton = GameObject.FindGameObjectWithTag("FlapButton").GetComponent<Button>();
         flapButton.onClick.AddListener(() => FlapTheBird());
         SetCamerasXOffset();
-    }
-
-    private void Start()
-    {
-        
+        //SetRigidbodyType(RigidbodyType2D.Kinematic);
     }
 
     private void FixedUpdate()
     {
-        if(isAlive)
+        if(isAlive && gameStarted)
         {
             Vector3 temp = transform.position;
             temp.x += forwardSpeed * Time.deltaTime;
@@ -45,6 +46,7 @@ public class BirdScript : MonoBehaviour
             {
                 didFlap = false;
                 rigitBody.velocity = new Vector2(0, bounceSpeed);
+                audioSource.PlayOneShot(flapClip);
                 anim.SetTrigger("Flap");
             }
 
@@ -71,6 +73,35 @@ public class BirdScript : MonoBehaviour
 
     public void FlapTheBird()
     {
+        Debug.Log("Flap");
         didFlap = true;
+    }
+
+    /*
+    public void SetRigidbodyType(RigidbodyType2D type)
+    {
+        rigitBody.bodyType = type;
+    }
+    */
+
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == "Ground" ||
+            target.tag == "Pipe")
+        {
+            if (isAlive)
+            {
+                isAlive = false;
+                anim.SetTrigger("Bird died");
+                audioSource.PlayOneShot(diedClip);
+                GameplayController.instance.PlayerDiedShowScore(score);
+            }
+        }
+        else if (target.tag == "PipeHolder")
+        {
+            score++;
+            audioSource.PlayOneShot(pointClip);
+            GameplayController.instance.SetScore(score);
+        }
     }
 }
