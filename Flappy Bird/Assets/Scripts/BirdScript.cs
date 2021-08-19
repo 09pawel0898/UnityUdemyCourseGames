@@ -73,7 +73,7 @@ public class BirdScript : MonoBehaviour
 
     public void FlapTheBird()
     {
-        Debug.Log("Flap");
+        //Debug.Log("Flap");
         didFlap = true;
     }
 
@@ -89,6 +89,7 @@ public class BirdScript : MonoBehaviour
         if (target.tag == "Ground" ||
             target.tag == "Pipe")
         {
+            //Debug.Log("Pipe");
             if (isAlive)
             {
                 isAlive = false;

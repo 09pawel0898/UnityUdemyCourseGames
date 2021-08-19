@@ -50,7 +50,18 @@ public class GameplayController : MonoBehaviour
 
     public void PauseGame()
     {
-        if(BirdScript.instance.isAlive)
+        Debug.Log("Pause");
+
+        int score = int.Parse(scoreText.text.ToString());
+
+        if (score <= 20)                    
+            medalImage.sprite = medals[1];
+        else if (score > 20 && score < 40)  
+            medalImage.sprite = medals[0];
+        else                                
+            medalImage.sprite = medals[2];
+
+        if (BirdScript.instance.isAlive)
         {
             pauseButton.gameObject.SetActive(false);
             pausePanel.SetActive(true);
@@ -98,13 +109,19 @@ public class GameplayController : MonoBehaviour
 
         bestScore.text = "" + GameController.instance.HighScore;
 
+        GooglePlayGamesScript.instance.AddScoreToLeaderboard(score);
+
         if (score <= 20)
             medalImage.sprite = medals[1];
         else if (score > 20 && score < 40)
         {
             medalImage.sprite = medals[0];
             if (GameController.instance.IsGreenBirdUnlocked() == 0)
+            {
+                Debug.Log("Unlocked Green Bird");
                 GameController.instance.UnlockGreenBird();
+                GooglePlayGamesScript.instance.UnlockAchievement();
+            }
         }
         else
         {
