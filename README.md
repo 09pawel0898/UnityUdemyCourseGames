@@ -6,6 +6,10 @@ Courses :<br/>
 The Most Comprehensive Guide To Unity Game Development Vol 2")
 <br/> 
 Both are created by [AwesomeTuts](https://www.awesometuts.com/ "AwesomeTuts")
+<br/> <br/>
+My goal during this course was to get as most knowlegde about the engine and external plugins as it is possible, not
+to put an effort in re-creating all these games. Thus, im not going to complete all the course which is partially repeating the same steps.
+I would practice the acquired knowledge in my own future projects.
 
 ## Features
 
@@ -18,6 +22,14 @@ Both are created by [AwesomeTuts](https://www.awesometuts.com/ "AwesomeTuts")
 ## Overwiew
 
 <p align="center">
+### Flappy Bird <br/>
 	<img src="https://media.giphy.com/media/VB3XHK9b8zFKrqy2BH/giphy.gif?cid=790b761199e657f1171eb63b1d2c86ce117eaa56870fb1b8&rid=giphy.gif&ct=g" alt="animated">
-	<img src="https://media.giphy.com/media/jIb1Wx2EN1pFn4NgMk/giphy-downsized-large.gif?cid=790b7611a94404b19aee798b2e0249721ec2d0c0c0625eff&rid=giphy-downsized-large.gif&ct=g" alt="animated">
 </p> 
+
+<br/>
+
+<p align="center">
+### Jack The Giant <br/>
+<br/>
+	<img src="https://media.giphy.com/media/jIb1Wx2EN1pFn4NgMk/giphy-downsized-large.gif?cid=790b7611a94404b19aee798b2e0249721ec2d0c0c0625eff&rid=giphy-downsized-large.gif&ct=g" alt="animated">
+</p>
