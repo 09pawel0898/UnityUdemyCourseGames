@@ -7028,7 +7028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 143233083805800047, guid: 3a8bfa351dd91c54d968bec79b9509b8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5626790669675116275, guid: 3a8bfa351dd91c54d968bec79b9509b8, type: 3}
       propertyPath: audio
