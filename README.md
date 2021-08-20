@@ -22,14 +22,13 @@ I would practice the acquired knowledge in my own future projects.
 ## Overwiew
 
 <p align="center">
-### Flappy Bird <br/>
+Flappy Bird <br/>
 	<img src="https://media.giphy.com/media/VB3XHK9b8zFKrqy2BH/giphy.gif?cid=790b761199e657f1171eb63b1d2c86ce117eaa56870fb1b8&rid=giphy.gif&ct=g" alt="animated">
 </p> 
 
 <br/>
 
 <p align="center">
-### Jack The Giant <br/>
-<br/>
+Jack The Giant <br/>
 	<img src="https://media.giphy.com/media/jIb1Wx2EN1pFn4NgMk/giphy-downsized-large.gif?cid=790b7611a94404b19aee798b2e0249721ec2d0c0c0625eff&rid=giphy-downsized-large.gif&ct=g" alt="animated">
 </p>
