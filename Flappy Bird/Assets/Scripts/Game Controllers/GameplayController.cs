@@ -110,6 +110,7 @@ public class GameplayController : MonoBehaviour
         bestScore.text = "" + GameController.instance.HighScore;
 
         GooglePlayGamesScript.instance.AddScoreToLeaderboard(score);
+        StartCoroutine(ShareScript.TakeSS(score));
 
         if (score <= 20)
             medalImage.sprite = medals[1];
