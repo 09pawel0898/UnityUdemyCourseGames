@@ -6,11 +6,15 @@ public class PlayerMovement : CharacterMovement
 {
     private float moveX, moveY;
     private Camera mainCam;
+    private Animator anim;
+
     private Vector2 mousePosition;
     private Vector2 direction;
     private Vector3 tempScale;
 
-    private Animator anim;
+    private PlayerWeaponManager playerWeaponManager;
+
+    [SerializeField] private Joystick joystick;
 
     protected override void Awake()
     {
@@ -18,18 +22,34 @@ public class PlayerMovement : CharacterMovement
 
         mainCam = Camera.main;
         anim = GetComponent<Animator>();
+        playerWeaponManager = GetComponent<PlayerWeaponManager>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        moveX = Input.GetAxisRaw(TagManager.HORIZONTAL_AXIS);
-        moveY = Input.GetAxisRaw(TagManager.VERTICAL_AXIS);
+        if (GameplayController.Instance.runOnMobile)
+        {
+            if (joystick.Horizontal < 0)
+                moveX = (joystick.Horizontal < -0.3) ? -1 : 0;
+            else
+                moveX = (joystick.Horizontal > 0.3) ? 1 : 0;
+
+            if (joystick.Vertical < 0)
+                moveY = (joystick.Vertical < -0.3) ? -1 : 0;
+            else
+                moveY = (joystick.Vertical > 0.3) ? 1 : 0;
+        }
+        else
+        {
+            moveX = Input.GetAxisRaw(TagManager.HORIZONTAL_AXIS);
+            moveY = Input.GetAxisRaw(TagManager.VERTICAL_AXIS);
+        }
 
         HandlePlayerTurning();
         HandleMovement(moveX, moveY);
     }
 
-    void HandlePlayerTurning()
+    private void HandlePlayerTurning()
     {
         mousePosition = mainCam.ScreenToWorldPoint(Input.mousePosition);
         direction = new Vector2(mousePosition.x - transform.position.x,
@@ -38,7 +58,7 @@ public class PlayerMovement : CharacterMovement
         HandlePlayerAnimation(direction.x,direction.y);
     }
 
-    void HandlePlayerAnimation(float x, float y)
+    private void HandlePlayerAnimation(float x, float y)
     {
         x = Mathf.RoundToInt(x);
         y = Mathf.RoundToInt(y);
@@ -54,5 +74,21 @@ public class PlayerMovement : CharacterMovement
 
         anim.SetFloat(TagManager.FACE_X_ANIMATION_PARAMETER, x);
         anim.SetFloat(TagManager.FACE_Y_ANIMATION_PARAMETER, y);
+
+        ActivateWeaponForSide(x, y);
+    }
+
+    private void ActivateWeaponForSide(float x, float y)
+    {
+        if (x == 1f && y == 0f)
+            playerWeaponManager.ActivateGun(0);
+        else if (x == 0f && y == 1f)
+            playerWeaponManager.ActivateGun(1);
+        else if (x == 0f && y == -1f)
+            playerWeaponManager.ActivateGun(2);
+        else if (x == 1f && y == 1f)
+            playerWeaponManager.ActivateGun(3);
+        else if (x == 1f && y == -1f)
+            playerWeaponManager.ActivateGun(4);
     }
 }

@@ -33,6 +33,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     [SerializeField] protected RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
+    [SerializeField] public bool IsTouched;
     private RectTransform baseRect = null;
 
     private Canvas canvas;
@@ -59,6 +60,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        IsTouched = true;
         OnDrag(eventData);
     }
 
@@ -133,6 +135,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+        IsTouched = false;
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
