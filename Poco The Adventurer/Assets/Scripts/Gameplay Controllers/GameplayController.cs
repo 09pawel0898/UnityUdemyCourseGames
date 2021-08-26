@@ -28,7 +28,7 @@ public class GameplayController : MonoBehaviour
     {
         runOnMobile = ( Application.platform == RuntimePlatform.Android ||
                         Application.platform == RuntimePlatform.IPhonePlayer) ? true : false;
-        runOnMobile = true;
+        //runOnMobile = true;
         if (!runOnMobile)
             GameObject.Find("Fixed Joystick").gameObject.SetActive(false);
     }

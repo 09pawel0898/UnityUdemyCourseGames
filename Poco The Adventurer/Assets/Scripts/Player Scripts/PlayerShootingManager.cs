@@ -10,12 +10,14 @@ public class PlayerShootingManager : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPos;
     [SerializeField] private Joystick joystick;
 
+    private Animator shootingAnimator;
     private PlayerWeaponManager playerWeaponManager;
     
 
     private void Awake()
     {
         playerWeaponManager = GetComponent<PlayerWeaponManager>();
+        shootingAnimator = bulletSpawnPos.GetComponent<Animator>();
     }
 
     private void LateUpdate()
@@ -32,7 +34,7 @@ public class PlayerShootingManager : MonoBehaviour
                 shootingTimer = Time.time + shootingTimerLimit;
                 
                 // animate muzzle flash
-
+                shootingAnimator.SetTrigger(TagManager.SHOOT_ANIMATION_PARAMETER);
                 CreateBullet();
             }
         }

@@ -14,6 +14,9 @@ public class PlayerWeaponManager : MonoBehaviour
     private Camera mainCam;
     private Vector2 bulletSpawnPosition;
     private Quaternion bulletRotation;
+    private CameraShake cameraShake;
+
+    [SerializeField] private float cameraShakeCooldown = 0.1f;
 
     //[SerializeField] private GameObject bullet;
 
@@ -22,7 +25,7 @@ public class PlayerWeaponManager : MonoBehaviour
         weaponIndex = 0;
         playerWeapons[weaponIndex].gameObject.SetActive(true);
         mainCam = Camera.main;
-
+        cameraShake = mainCam.GetComponent<CameraShake>();
     }
 
 
@@ -56,10 +59,16 @@ public class PlayerWeaponManager : MonoBehaviour
 
         bulletRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 
+        /*
         GameObject newBullet = Instantiate( weaponBullets[weaponIndex], 
                                             spawnPos, 
                                             bulletRotation);
 
         newBullet.GetComponent<Bullet>().MoveInDirection(direction);
+        */
+
+        BulletPool.Instance.FireBullet( weaponIndex,spawnPos,bulletRotation,direction);
+
+        cameraShake.ShakeCamera(cameraShakeCooldown);
     }
 }
