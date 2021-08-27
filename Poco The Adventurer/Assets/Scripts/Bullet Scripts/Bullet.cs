@@ -69,6 +69,7 @@ public class Bullet : MonoBehaviour
                 dealthDamage = true;
 
                 // deal damage to enemy
+                collision.GetComponent<CharacterHealth>().TakeDamage(damageAmount);
             }
         }
         else if(collision.CompareTag(TagManager.BLOCKING_TAG))

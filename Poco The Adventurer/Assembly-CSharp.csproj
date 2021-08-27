@@ -62,6 +62,8 @@
     <Compile Include="Assets\Scripts\Bullet Scripts\Bullet.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
     <Compile Include="Assets\Scripts\Player Scripts\PlayerShootingManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Camera Scripts\CameraShake.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Scripts\Helper Scripts\TagManager.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
@@ -72,7 +74,10 @@
     <Compile Include="Assets\Scripts\Player Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Gameplay Controllers\GameplayController.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
-    <Compile Include="Assets\Scripts\Camera Scripts\CameraShake.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\EnemyAnimation.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\EnemyBatchHandler.cs" />
+    <Compile Include="Assets\Scripts\Enemy Scripts\EnemyTargetController.cs" />
+    <Compile Include="Assets\Scripts\Player Scripts\CharacterHealth.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Sprites\Pixel Shooter and Towers\guns\readme.txt" />

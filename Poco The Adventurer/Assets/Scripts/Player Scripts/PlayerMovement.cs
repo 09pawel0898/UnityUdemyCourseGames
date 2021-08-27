@@ -13,6 +13,7 @@ public class PlayerMovement : CharacterMovement
     private Vector3 tempScale;
 
     private PlayerWeaponManager playerWeaponManager;
+    private CharacterHealth playerHealth;
 
     [SerializeField] private Joystick joystick;
 
@@ -25,8 +26,16 @@ public class PlayerMovement : CharacterMovement
         playerWeaponManager = GetComponent<PlayerWeaponManager>();
     }
 
+    private void Start()
+    {
+        playerHealth = GetComponent<CharacterHealth>();    
+    }
+
     private void FixedUpdate()
     {
+        if (!playerHealth.IsAlive())
+            return;
+
         if (GameplayController.Instance.runOnMobile)
         {
             if (joystick.Horizontal < 0)
