@@ -21,11 +21,14 @@ public class CharacterHealth : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        health -= damageAmount;
-
-        if(health <= 0f)
+        if (IsAlive())
         {
-            anim.SetTrigger(TagManager.DEATH_ANIMATION_PARAMETER);
+            health -= damageAmount;
+
+            if (health <= 0f)
+            {
+                anim.SetTrigger(TagManager.DEATH_ANIMATION_PARAMETER);
+            }
         }
     }
 

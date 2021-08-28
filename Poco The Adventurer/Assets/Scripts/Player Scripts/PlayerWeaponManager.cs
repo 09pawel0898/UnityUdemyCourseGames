@@ -28,7 +28,6 @@ public class PlayerWeaponManager : MonoBehaviour
         cameraShake = mainCam.GetComponent<CameraShake>();
     }
 
-
     private void Update()
     {
         ChangeWeapon();

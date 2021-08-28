@@ -7,13 +7,13 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject[] guns;
     private int currentGun;
 
-    void Start()
+    private void Start()
     {
         DeactivateAllGuns();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

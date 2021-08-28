@@ -20,8 +20,8 @@ public class CameraShake : MonoBehaviour
         if(shakeAmount > 0)
         {
             camPos = transform.position;
-            cameraShakingOffset_X = (Random.value * shakeAmount * 2 - shakeAmount)/ 2.0f;
-            cameraShakingOffset_Y = (Random.value * shakeAmount * 2 - shakeAmount)/ 2.0f;
+            cameraShakingOffset_X = (Random.value * shakeAmount * 2 - shakeAmount)/ 1.5f;
+            cameraShakingOffset_Y = (Random.value * shakeAmount * 2 - shakeAmount)/ 1.5f;
 
             camPos.x += cameraShakingOffset_X;
             camPos.y += cameraShakingOffset_Y;

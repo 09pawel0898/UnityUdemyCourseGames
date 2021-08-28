@@ -29,6 +29,7 @@ public class EnemyShooter : MonoBehaviour
 
     [SerializeField] private float shootTimeDelay = 2f;
     [SerializeField] private Transform bulletSpawnPosition;
+    [SerializeField] private EnemyBatchHandler enemyBatch;
 
     private float shootTimer;
     private Transform playerTransform;
@@ -74,6 +75,11 @@ public class EnemyShooter : MonoBehaviour
         CheckToShootPlayer();    
     }
 
+    private void OnDisable()
+    {
+        if(!enemyHealth.IsAlive())
+            enemyBatch.RemoveShooterEnemy(this);
+    }
     private void FixedUpdate()
     {
         if (!enemyHealth.IsAlive() || !playerTransform)

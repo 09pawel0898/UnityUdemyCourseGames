@@ -23,6 +23,8 @@ public class Enemy : CharacterMovement
     private Vector3 myScale;
     private CharacterHealth enemyHealth;
 
+    [SerializeField] private EnemyBatchHandler batchHandler;
+
     protected override void Awake()
     {
         base.Awake();
@@ -39,6 +41,7 @@ public class Enemy : CharacterMovement
         turningTimeDelay += 1f * turningDelayRate;
 
         enemyHealth = GetComponent<CharacterHealth>();
+        batchHandler = GetComponentInParent<EnemyBatchHandler>();
     }
 
     private void Update()
@@ -47,6 +50,12 @@ public class Enemy : CharacterMovement
             return;
 
         HandleFacingDirection();
+    }
+
+    private void OnDestroy()
+    {
+        if (!enemyHealth.IsAlive())
+            batchHandler.RemoveEnemy(this);
     }
 
     private void FixedUpdate()
