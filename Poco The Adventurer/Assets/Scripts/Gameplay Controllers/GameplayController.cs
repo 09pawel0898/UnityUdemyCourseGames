@@ -11,8 +11,13 @@ public class GameplayController : MonoBehaviour
     void Awake()
     {
         MakeSingletgon();
+    }
+
+    private void Start()
+    {
         ConfigureRuntimePlatform();
     }
+
     void MakeSingletgon()
     {
         if (m_Instance != null)
