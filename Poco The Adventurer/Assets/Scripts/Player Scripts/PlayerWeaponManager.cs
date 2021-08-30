@@ -43,12 +43,21 @@ public class PlayerWeaponManager : MonoBehaviour
         playerWeapons[weaponIndex].gameObject.SetActive(true);
     }
 
-    public void Shoot(Vector3 spawnPos)
+    public Vector2 GetTargetPos()
     {
-        targetPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        return targetPos;
+    }
+
+    public void Shoot(Vector3 spawnPos, bool isJoystickTouched)
+    {
+        if(!isJoystickTouched)
+            targetPos = mainCam.ScreenToWorldPoint(Input.touches[0].position);
+        else
+            targetPos = mainCam.ScreenToWorldPoint(Input.touches[1].position);
+
         bulletSpawnPosition = new Vector2(spawnPos.x, spawnPos.y);
-        //direction = (targetPos - new Vector2(transform.position.x, transform.position.y)).normalized;
-        direction = playerMovement.GetFacingDirection();
+        direction = (targetPos - new Vector2(transform.position.x, transform.position.y)).normalized;
+        //direction = playerMovement.GetFacingDirection();
 
         bulletRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 

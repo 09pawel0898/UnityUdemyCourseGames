@@ -8,6 +8,7 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField] private float health = 100f;
 
     private Animator anim;
+    [SerializeField] private Animator backgroundSoundAnim;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class CharacterHealth : MonoBehaviour
         Destroy(gameObject);
         if (gameObject.tag == "Player")
         {
+            backgroundSoundAnim.Play("FadeOut");
             SceneFader.Instance.LoadLevel("Menu");
         }
     }
