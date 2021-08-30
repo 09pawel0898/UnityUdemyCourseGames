@@ -8,8 +8,11 @@ The Most Comprehensive Guide To Unity Game Development Vol 2")
 Both are created by [AwesomeTuts](https://www.awesometuts.com/ "AwesomeTuts")
 <br/> <br/>
 My goal during this course was to get as most knowlegde about the engine and external plugins as possible, not
-to put an effort in re-creating all these games. Thus, im not going to complete all the course which is partially repeating the same steps.
+to re-create all these games. Thus, im not going to complete all the course which is partially repeating the same steps.
 I would practice the acquired knowledge in my own future projects.
+
+Nevertheless I put in a lot of effort in these three titles, and expanded them with many new features, especially the Poco The Adventurer.
+
 
 ## Features
 
