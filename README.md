@@ -26,6 +26,7 @@ Nevertheless I put in a lot of effort in these three titles, and expanded them w
 ## Building
 
 All required Unity files are provided, you will need Unity 2020.1.1f1 for building.
+Each title contain an Apk build also.
 
 ## Overwiew
 
