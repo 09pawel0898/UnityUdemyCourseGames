@@ -37,7 +37,7 @@ public class SceneFader : MonoBehaviour
         fadePanel.SetActive(true);
         anim.Play("FadeIn");
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(newLevelName);
         anim.Play("FadeOut");
         yield return new WaitForSeconds(1f);
 

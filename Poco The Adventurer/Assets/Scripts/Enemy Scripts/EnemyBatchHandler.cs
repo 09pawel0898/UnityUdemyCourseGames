@@ -9,7 +9,7 @@ public class EnemyBatchHandler : MonoBehaviour
     [SerializeField] private Transform shooterEnemyHolder;
     [SerializeField] private List<EnemyShooter> shooterEnemies;
 
-    private void Start()
+    private void Awake()
     {
         foreach(Transform trans in GetComponentInChildren<Transform>())
         {

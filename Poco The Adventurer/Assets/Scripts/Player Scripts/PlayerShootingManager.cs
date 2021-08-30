@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShootingManager : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class PlayerShootingManager : MonoBehaviour
 
     private Animator shootingAnimator;
     private PlayerWeaponManager playerWeaponManager;
-    
+
+    [SerializeField] private FireButton fireButton;
 
     private void Awake()
     {
@@ -25,9 +27,9 @@ public class PlayerShootingManager : MonoBehaviour
         HandleShooting();
     }
 
-    private void HandleShooting()
+    public void HandleShooting()
     {
-        if(Input.GetMouseButton(0) && !joystick.IsTouched)
+        if(fireButton.IsPressed)
         {
             if(Time.time > shootingTimer)
             {

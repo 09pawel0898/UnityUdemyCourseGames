@@ -139,7 +139,6 @@ public class EnemyShooter : MonoBehaviour
     {
         if(playerInRange)
         {
-            Debug.Log("In Range");
             if(Time.time > shootTimer)
             {
                 shootTimer = Time.time + shootTimeDelay;

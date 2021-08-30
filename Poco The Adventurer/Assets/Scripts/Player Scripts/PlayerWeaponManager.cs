@@ -16,6 +16,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private Quaternion bulletRotation;
     private CameraShake cameraShake;
 
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float cameraShakeCooldown = 0.1f;
 
     //[SerializeField] private GameObject bullet;
@@ -28,33 +29,26 @@ public class PlayerWeaponManager : MonoBehaviour
         cameraShake = mainCam.GetComponent<CameraShake>();
     }
 
-    private void Update()
-    {
-        ChangeWeapon();
-    }
-
     public void ActivateGun(int gunIndex)
     {
         playerWeapons[weaponIndex].ActivateGun(gunIndex); 
     }
 
-    private void ChangeWeapon()
+    public void ChangeWeapon()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            playerWeapons[weaponIndex].gameObject.SetActive(false);
-            weaponIndex++;
-            if (weaponIndex == playerWeapons.Length)
-                weaponIndex = 0;
-            playerWeapons[weaponIndex].gameObject.SetActive(true);
-        }
+        playerWeapons[weaponIndex].gameObject.SetActive(false);
+        weaponIndex++;
+        if (weaponIndex == playerWeapons.Length)
+            weaponIndex = 0;
+        playerWeapons[weaponIndex].gameObject.SetActive(true);
     }
 
     public void Shoot(Vector3 spawnPos)
     {
         targetPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         bulletSpawnPosition = new Vector2(spawnPos.x, spawnPos.y);
-        direction = (targetPos - new Vector2(transform.position.x, transform.position.y)).normalized;
+        //direction = (targetPos - new Vector2(transform.position.x, transform.position.y)).normalized;
+        direction = playerMovement.GetFacingDirection();
 
         bulletRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 

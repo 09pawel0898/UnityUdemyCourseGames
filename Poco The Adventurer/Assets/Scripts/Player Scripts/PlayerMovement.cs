@@ -10,11 +10,12 @@ public class PlayerMovement : CharacterMovement
 
     private Vector2 mousePosition;
     private Vector2 direction;
+    private Vector2 facingDirection;
     private Vector3 tempScale;
 
     private PlayerWeaponManager playerWeaponManager;
     private CharacterHealth playerHealth;
-
+    [SerializeField] private GameplayController gameplayController;
     [SerializeField] private Joystick joystick;
 
     protected override void Awake()
@@ -24,6 +25,7 @@ public class PlayerMovement : CharacterMovement
         mainCam = Camera.main;
         anim = GetComponent<Animator>();
         playerWeaponManager = GetComponent<PlayerWeaponManager>();
+        facingDirection = new Vector2(0, -1);
     }
 
     private void Start()
@@ -36,7 +38,7 @@ public class PlayerMovement : CharacterMovement
         if (!playerHealth.IsAlive())
             return;
 
-        if (GameplayController.Instance.runOnMobile)
+        if (gameplayController.runOnMobile)
         {
             if (joystick.Horizontal < 0)
                 moveX = (joystick.Horizontal < -0.3) ? -1 : 0;
@@ -53,16 +55,37 @@ public class PlayerMovement : CharacterMovement
             moveX = Input.GetAxisRaw(TagManager.HORIZONTAL_AXIS);
             moveY = Input.GetAxisRaw(TagManager.VERTICAL_AXIS);
         }
-
+        if(!(moveX == 0 && moveY == 0))
+            UpdateFacingDirection();
         HandlePlayerTurning();
         HandleMovement(moveX, moveY);
+    }
+
+    private void UpdateFacingDirection()
+    {
+            Vector2 fDir = new Vector2();
+            if (moveX < 0.0f) fDir.x = -1;
+            else if (moveX > 0.0f) fDir.x = 1;
+            else if (moveX == 0.0f) fDir.x = 0;
+
+            if (moveY < 0.0f) fDir.y = -1;
+            else if (moveY > 0.0f) fDir.y = 1;
+            else if (moveY == 0.0f) fDir.y = 0;
+
+            facingDirection = fDir.normalized;
+    }
+
+    public Vector2 GetFacingDirection()
+    {
+        return facingDirection;
     }
 
     private void HandlePlayerTurning()
     {
         mousePosition = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        direction = new Vector2(mousePosition.x - transform.position.x,
-                                mousePosition.y - transform.position.y).normalized;
+        //direction = new Vector2(mousePosition.x - transform.position.x,
+        //                        mousePosition.y - transform.position.y).normalized;
+        direction = GetFacingDirection();
 
         HandlePlayerAnimation(direction.x,direction.y);
     }

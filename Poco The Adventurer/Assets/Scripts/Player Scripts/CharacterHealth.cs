@@ -35,6 +35,10 @@ public class CharacterHealth : MonoBehaviour
     private void DestroyCharacter()
     {
         Destroy(gameObject);
+        if (gameObject.tag == "Player")
+        {
+            SceneFader.Instance.LoadLevel("Menu");
+        }
     }
 
     public bool IsAlive()
