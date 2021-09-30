@@ -49,7 +49,7 @@ Flabby bird clone with google leaderboards, achievements and social media sharin
 <br/>
 <p align="center">
 Jack The Giant <br/>
-	<img src="https://media.giphy.com/media/jIb1Wx2EN1pFn4NgMk/giphy-downsized-large.gif?cid=790b7611a94404b19aee798b2e0249721ec2d0c0c0625eff&rid=giphy-downsized-large.gif&ct=g" alt="animated">
+	<img src="https://media.giphy.com/media/1F6686lbB7vRWnXq1p/giphy.gif" alt="animated">
 <br/><br/>
 Funny Jack The Giant game with ads(AdMob).
 </p>
